@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu6d0tlpg6pyj"]
+
+[ext_resource type="AudioStream" uid="uid://baa17jm2caxe6" path="res://audio/rumble.wav" id="1_a6myl"]
+[ext_resource type="AudioStream" uid="uid://beqjyf65yp5uk" path="res://audio/heavy_step.wav" id="2_iwr44"]
+[ext_resource type="AudioStream" uid="uid://dqxjr5l0nirqm" path="res://audio/techno-loop-273137.wav" id="3_03pmy"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_03pmy"]
+random_pitch = 1.2
+random_volume_offset_db = 2.65
+streams_count = 1
+stream_0/stream = ExtResource("2_iwr44")
+
+[node name="Ambience" type="AudioStreamPlayer"]
+stream = ExtResource("1_a6myl")
+autoplay = true
+playback_type = 1
+
+[node name="BoxHit" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_03pmy")
+volume_db = 11.427
+pitch_scale = 0.41
+max_polyphony = 2
+playback_type = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_03pmy")
+volume_db = -16.783
+playback_type = 1

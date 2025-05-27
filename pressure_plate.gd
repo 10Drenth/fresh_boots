@@ -22,11 +22,10 @@ func change_state(add: bool) -> void:
 	if pressing > 0 and not was_pressed:
 		state_changed.emit(true)
 		play("Pressed")
+		$AudioStreamPlayer.play()
 		power_line.texture = line_powered_texture
 
 	if pressing <= 0 and was_pressed:
 		state_changed.emit(false)
 		play("UnPressed")
 		power_line.texture = line_unpowered_texture
-
-

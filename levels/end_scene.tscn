@@ -1,0 +1,124 @@
+[gd_scene load_steps=15 format=3 uid="uid://df566mixdm7ae"]
+
+[ext_resource type="Texture2D" uid="uid://b64g5nss3lxht" path="res://levels/end_screen.png" id="1_iuxuk"]
+[ext_resource type="Script" uid="uid://nrsqn57i2ru1" path="res://end_running_fellow.gd" id="2_06ixo"]
+[ext_resource type="Texture2D" uid="uid://bln2d3enllume" path="res://player_no_shoes.png" id="3_a6a3s"]
+[ext_resource type="Texture2D" uid="uid://cokln5lbttjna" path="res://shoes_running.png" id="4_4030s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohd23"]
+atlas = ExtResource("3_a6a3s")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5sx7"]
+atlas = ExtResource("3_a6a3s")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti018"]
+atlas = ExtResource("3_a6a3s")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xgv5"]
+atlas = ExtResource("3_a6a3s")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tta1o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohd23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5sx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti018")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xgv5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyulw"]
+atlas = ExtResource("4_4030s")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6hik"]
+atlas = ExtResource("4_4030s")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uu21o"]
+atlas = ExtResource("4_4030s")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c21bb"]
+atlas = ExtResource("4_4030s")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6vlqc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyulw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6hik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uu21o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c21bb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EndScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="TextureRect" parent="."]
+layout_mode = 0
+texture = ExtResource("1_iuxuk")
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+self_modulate = Color(0.796078, 0.858824, 0.988235, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -174.0
+offset_top = -69.0
+offset_right = -9.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 0
+bbcode_enabled = true
+text = "[wave amp=70.0 freq=5.0 connected=1]Thanks for playing!"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-282, 0)
+script = ExtResource("2_06ixo")
+
+[node name="Guy" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(-134, 450)
+sprite_frames = SubResource("SpriteFrames_tta1o")
+autoplay = "default"
+frame_progress = 0.53403
+
+[node name="Shoes" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(-48, 450)
+sprite_frames = SubResource("SpriteFrames_6vlqc")
+autoplay = "default"
+frame_progress = 0.70934

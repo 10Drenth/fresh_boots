@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://30odvx0sq1j2"]
+
+[ext_resource type="Texture2D" uid="uid://ubjh27o2y6ns" path="res://game/player/player_shoes.png" id="1_ybaro"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_peteh"]
+atlas = ExtResource("1_ybaro")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6tck"]
+atlas = ExtResource("1_ybaro")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ahv2"]
+atlas = ExtResource("1_ybaro")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvctl"]
+atlas = ExtResource("1_ybaro")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s8lhm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_peteh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6tck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ahv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvctl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PositionPreview" type="Node2D"]
+modulate = Color(0, 1, 1, 0.662745)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 1, 1, 1)
+z_index = 3
+sprite_frames = SubResource("SpriteFrames_s8lhm")
+autoplay = "default"
+offset = Vector2(0, -32)

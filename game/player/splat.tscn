@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cki6gim2j1il4"]
+
+[ext_resource type="Texture2D" uid="uid://bsr8aq4w2q52q" path="res://game/player/splat.png" id="1_yeo5x"]
+
+[node name="Splat" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yeo5x")
+offset = Vector2(0, -32)

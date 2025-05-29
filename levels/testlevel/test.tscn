@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://bs8s5l6ukookp"]
+
+[ext_resource type="Texture2D" uid="uid://d1vlab5pleacw" path="res://levels/testlevel/walls1.png" id="1_0gupg"]
+[ext_resource type="Texture2D" uid="uid://bid1we5oyu8a2" path="res://icon.svg" id="2_mt2qi"]
+[ext_resource type="Texture2D" uid="uid://c4th1qi12vs2i" path="res://levels/testlevel/bg.png" id="3_gl0qi"]
+[ext_resource type="PackedScene" uid="uid://cdok6yuqpisr1" path="res://game/entities/box/box.tscn" id="4_vox3u"]
+[ext_resource type="PackedScene" uid="uid://30odvx0sq1j2" path="res://game/player/position_preview.tscn" id="5_sk0o0"]
+[ext_resource type="PackedScene" uid="uid://d1yn8jbd2d010" path="res://game/player/player.tscn" id="6_uaw5e"]
+[ext_resource type="PackedScene" uid="uid://lfewp55waowi" path="res://game/entities/door/door.tscn" id="7_ej4i7"]
+[ext_resource type="PackedScene" uid="uid://c3r1deh8xwye7" path="res://game/entities/pressure_plate/pressure_plate.tscn" id="8_dbtqe"]
+[ext_resource type="Texture2D" uid="uid://dxrd1qf1dd478" path="res://game/entities/pressure_plate/power_line_off.png" id="9_wx8np"]
+[ext_resource type="PackedScene" uid="uid://jucvhlysddhq" path="res://game/entities/shoes_entity/shoes.tscn" id="10_6kden"]
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="WorldBounds" type="StaticBody2D" parent="."]
+collision_layer = 9
+
+[node name="Sprite2D" type="Sprite2D" parent="WorldBounds"]
+texture = ExtResource("1_0gupg")
+
+[node name="Sprite2D" type="Sprite2D" parent="WorldBounds/Sprite2D"]
+clip_children = 1
+position = Vector2(-157, 31)
+texture = ExtResource("2_mt2qi")
+
+[node name="Sprite2D2" type="Sprite2D" parent="WorldBounds/Sprite2D/Sprite2D"]
+show_behind_parent = true
+clip_children = 2
+position = Vector2(57, -37)
+rotation = -0.761512
+texture = ExtResource("3_gl0qi")
+
+[node name="Box" parent="WorldBounds" instance=ExtResource("4_vox3u")]
+position = Vector2(-7, -2)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldBounds"]
+position = Vector2(4, 24)
+build_mode = 1
+polygon = PackedVector2Array(-328, -200, 152, -200, 152, -8, 312, -8, 312, 120, -328, 120)
+
+[node name="PositionPreview" parent="." instance=ExtResource("5_sk0o0")]
+unique_name_in_owner = true
+position = Vector2(90, -70)
+
+[node name="Player" parent="." instance=ExtResource("6_uaw5e")]
+unique_name_in_owner = true
+position = Vector2(-299, 128)
+
+[node name="Door" parent="." instance=ExtResource("7_ej4i7")]
+position = Vector2(268, 144)
+
+[node name="PressurePlate" parent="." instance=ExtResource("8_dbtqe")]
+position = Vector2(44, 144)
+
+[node name="PowerLine" type="Line2D" parent="PressurePlate"]
+z_index = -1
+texture_filter = 1
+position = Vector2(-172, -144)
+points = PackedVector2Array(167, 146, 167, 175, 167, 184, 172, 184, 372, 184, 380, 184, 380, 184, 380, 176, 380, 144)
+width = 4.0
+texture = ExtResource("9_wx8np")
+texture_mode = 1
+round_precision = 1
+
+[node name="Shoes" parent="." instance=ExtResource("10_6kden")]
+unique_name_in_owner = true
+position = Vector2(46, 98)
+
+[node name="LevelCam" type="Camera2D" parent="."]
+position = Vector2(-14, -13)
+enabled = false
+zoom = Vector2(1.5, 1.5)

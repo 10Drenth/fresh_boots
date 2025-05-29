@@ -1,15 +1,15 @@
 [gd_scene load_steps=18 format=3 uid="uid://cf0pf7won2of7"]
 
-[ext_resource type="Script" uid="uid://bvo3d37d86hng" path="res://levels/level.gd" id="1_btoec"]
+[ext_resource type="Script" uid="uid://bvo3d37d86hng" path="res://game/level_management/level.gd" id="1_btoec"]
 [ext_resource type="Texture2D" uid="uid://cs1yvalphitjb" path="res://levels/level1/lvl1_walls.png" id="1_n46q3"]
 [ext_resource type="Texture2D" uid="uid://da8v54oaarn2o" path="res://levels/level1/lvl1_bg.png" id="2_btoec"]
-[ext_resource type="Script" uid="uid://0tcmmxqwlnl3" path="res://levels/light_occluder_2d.gd" id="3_3sk1a"]
-[ext_resource type="Shader" uid="uid://d0tb6q35l2jaq" path="res://space.gdshader" id="3_gwceb"]
-[ext_resource type="PackedScene" uid="uid://lfewp55waowi" path="res://door.tscn" id="4_l53as"]
-[ext_resource type="PackedScene" uid="uid://d1yn8jbd2d010" path="res://player.tscn" id="5_3sk1a"]
-[ext_resource type="Texture2D" uid="uid://5xu64clsoum5" path="res://sky_noise.tres" id="6_08mmt"]
-[ext_resource type="Script" uid="uid://yql4lbkxf67a" path="res://cam.gd" id="7_gwceb"]
-[ext_resource type="PackedScene" uid="uid://jucvhlysddhq" path="res://shoes.tscn" id="8_l53as"]
+[ext_resource type="Script" uid="uid://0tcmmxqwlnl3" path="res://game/easthetics/light_occluder_2d.gd" id="3_3sk1a"]
+[ext_resource type="Shader" uid="uid://d0tb6q35l2jaq" path="res://game/easthetics/space.gdshader" id="3_gwceb"]
+[ext_resource type="PackedScene" uid="uid://lfewp55waowi" path="res://game/entities/door/door.tscn" id="4_l53as"]
+[ext_resource type="PackedScene" uid="uid://d1yn8jbd2d010" path="res://game/player/player.tscn" id="5_3sk1a"]
+[ext_resource type="Texture2D" uid="uid://5xu64clsoum5" path="res://game/easthetics/sky_noise.tres" id="6_08mmt"]
+[ext_resource type="Script" uid="uid://yql4lbkxf67a" path="res://game/entities/cam.gd" id="7_gwceb"]
+[ext_resource type="PackedScene" uid="uid://jucvhlysddhq" path="res://game/entities/shoes_entity/shoes.tscn" id="8_l53as"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_08mmt"]
 
@@ -91,53 +91,10 @@ position = Vector2(92, 112)
 start_open = true
 
 [node name="PointLight2D" type="PointLight2D" parent="Door"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-visible = true
-modulate = Color(1, 1, 1, 1)
-self_modulate = Color(1, 1, 1, 1)
-show_behind_parent = false
-top_level = false
-light_mask = 1
-visibility_layer = 1
-z_index = 0
-z_as_relative = true
-y_sort_enabled = false
-texture_filter = 0
-texture_repeat = 0
-material = null
-use_parent_material = false
 position = Vector2(0, -70)
-rotation = 0.0
 scale = Vector2(1.2, 1.2)
-skew = 0.0
-enabled = true
-editor_only = false
-color = Color(1, 1, 1, 1)
-energy = 1.0
-blend_mode = 0
-range_z_min = -1024
-range_z_max = 1024
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
 shadow_enabled = true
-shadow_color = Color(0, 0, 0, 0)
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
 texture = SubResource("GradientTexture2D_aerfg")
-offset = Vector2(0, 0)
-texture_scale = 1.0
-height = 0.0
-script = null
 
 [node name="Player" parent="." instance=ExtResource("5_3sk1a")]
 position = Vector2(-292, 176)
@@ -152,50 +109,6 @@ script = ExtResource("7_gwceb")
 position = Vector2(-68, 80)
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-visible = true
-modulate = Color(1, 1, 1, 1)
-self_modulate = Color(1, 1, 1, 1)
-show_behind_parent = false
-top_level = false
-light_mask = 1
-visibility_layer = 1
-z_index = 0
-z_as_relative = true
-y_sort_enabled = false
-texture_filter = 0
-texture_repeat = 0
-material = null
-use_parent_material = false
 position = Vector2(-226, 49)
-rotation = 0.0
-scale = Vector2(1, 1)
-skew = 0.0
-enabled = true
-editor_only = false
-color = Color(1, 1, 1, 1)
-energy = 1.0
-blend_mode = 0
-range_z_min = -1024
-range_z_max = 1024
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
 shadow_enabled = true
-shadow_color = Color(0, 0, 0, 0)
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
 texture = SubResource("GradientTexture2D_3sk1a")
-offset = Vector2(0, 0)
-texture_scale = 1.0
-height = 0.0
-script = null

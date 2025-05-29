@@ -1,21 +1,21 @@
 [gd_scene load_steps=56 format=3 uid="uid://dx7g72ofh5vow"]
 
-[ext_resource type="Script" uid="uid://bvo3d37d86hng" path="res://levels/level.gd" id="1_gci8k"]
-[ext_resource type="Script" uid="uid://0tcmmxqwlnl3" path="res://levels/light_occluder_2d.gd" id="1_ij65d"]
+[ext_resource type="Script" uid="uid://bvo3d37d86hng" path="res://game/level_management/level.gd" id="1_gci8k"]
+[ext_resource type="Script" uid="uid://0tcmmxqwlnl3" path="res://game/easthetics/light_occluder_2d.gd" id="1_ij65d"]
 [ext_resource type="Texture2D" uid="uid://b274ljtowem3k" path="res://levels/level5/lvl5_walls.png" id="2_gci8k"]
 [ext_resource type="Texture2D" uid="uid://blvuwbomfdjmt" path="res://levels/level5/lvl5_bg.png" id="3_gder6"]
-[ext_resource type="Shader" uid="uid://d0tb6q35l2jaq" path="res://space.gdshader" id="4_hv08k"]
-[ext_resource type="Texture2D" uid="uid://5xu64clsoum5" path="res://sky_noise.tres" id="5_p0827"]
-[ext_resource type="Texture2D" uid="uid://bqp5uli4xartr" path="res://door_sheet.png" id="7_hv08k"]
-[ext_resource type="PackedScene" uid="uid://d1yn8jbd2d010" path="res://player.tscn" id="7_mgx0j"]
-[ext_resource type="PackedScene" uid="uid://jucvhlysddhq" path="res://shoes.tscn" id="8_k3t65"]
-[ext_resource type="Script" uid="uid://5475qve0yq44" path="res://door.gd" id="8_p0827"]
-[ext_resource type="Script" uid="uid://yql4lbkxf67a" path="res://cam.gd" id="9_bon8i"]
-[ext_resource type="Texture2D" uid="uid://d1j4tnitdttoh" path="res://levels/confettie.png" id="9_brp6y"]
-[ext_resource type="PackedScene" uid="uid://c3r1deh8xwye7" path="res://pressure_plate.tscn" id="10_av2kh"]
+[ext_resource type="Shader" uid="uid://d0tb6q35l2jaq" path="res://game/easthetics/space.gdshader" id="4_hv08k"]
+[ext_resource type="Texture2D" uid="uid://5xu64clsoum5" path="res://game/easthetics/sky_noise.tres" id="5_p0827"]
+[ext_resource type="Texture2D" uid="uid://bqp5uli4xartr" path="res://game/entities/door/door_sheet.png" id="7_hv08k"]
+[ext_resource type="PackedScene" uid="uid://d1yn8jbd2d010" path="res://game/player/player.tscn" id="7_mgx0j"]
+[ext_resource type="PackedScene" uid="uid://jucvhlysddhq" path="res://game/entities/shoes_entity/shoes.tscn" id="8_k3t65"]
+[ext_resource type="Script" uid="uid://5475qve0yq44" path="res://game/entities/door/door.gd" id="8_p0827"]
+[ext_resource type="Script" uid="uid://yql4lbkxf67a" path="res://game/entities/cam.gd" id="9_bon8i"]
+[ext_resource type="Texture2D" uid="uid://d1j4tnitdttoh" path="res://game/entities/door/confettie.png" id="9_brp6y"]
+[ext_resource type="PackedScene" uid="uid://c3r1deh8xwye7" path="res://game/entities/pressure_plate/pressure_plate.tscn" id="10_av2kh"]
 [ext_resource type="AudioStream" uid="uid://dyb07q3ckc24n" path="res://audio/party-horn.wav" id="10_p0827"]
-[ext_resource type="Texture2D" uid="uid://dxrd1qf1dd478" path="res://power_line_off.png" id="11_mmy2b"]
-[ext_resource type="PackedScene" uid="uid://cdok6yuqpisr1" path="res://box.tscn" id="12_cekp2"]
+[ext_resource type="Texture2D" uid="uid://dxrd1qf1dd478" path="res://game/entities/pressure_plate/power_line_off.png" id="11_mmy2b"]
+[ext_resource type="PackedScene" uid="uid://cdok6yuqpisr1" path="res://game/entities/box/box.tscn" id="12_cekp2"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mlk23"]
 
@@ -349,53 +349,10 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_xg3tq")
 
 [node name="PointLight2D" type="PointLight2D" parent="Door"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-visible = true
-modulate = Color(1, 1, 1, 1)
-self_modulate = Color(1, 1, 1, 1)
-show_behind_parent = false
-top_level = false
-light_mask = 1
-visibility_layer = 1
-z_index = 0
-z_as_relative = true
-y_sort_enabled = false
-texture_filter = 0
-texture_repeat = 0
-material = null
-use_parent_material = false
 position = Vector2(0, -70)
-rotation = 0.0
 scale = Vector2(1.2, 1.2)
-skew = 0.0
-enabled = true
-editor_only = false
-color = Color(1, 1, 1, 1)
-energy = 1.0
-blend_mode = 0
-range_z_min = -1024
-range_z_max = 1024
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
 shadow_enabled = true
-shadow_color = Color(0, 0, 0, 0)
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
 texture = SubResource("GradientTexture2D_pggb5")
-offset = Vector2(0, 0)
-texture_scale = 1.0
-height = 0.0
-script = null
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Door"]
 stream = ExtResource("10_p0827")
@@ -416,7 +373,6 @@ rotation = -1.5708
 [node name="PowerLine" type="Line2D" parent="PressurePlate"]
 texture_filter = 1
 position = Vector2(-172, -144)
-scale = Vector2(1, 1)
 points = PackedVector2Array(167, 146, 167, 175, 167, 184, 154, 184, 108, 184, 92, 184, 92, 177, 92, 88, 92, 83, 94, 83, 174, 83, 188, 83, 188, 79)
 width = 4.0
 texture = ExtResource("11_mmy2b")
@@ -424,53 +380,10 @@ texture_mode = 1
 round_precision = 1
 
 [node name="PointLight2D3" type="PointLight2D" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-visible = true
-modulate = Color(1, 1, 1, 1)
-self_modulate = Color(1, 1, 1, 1)
-show_behind_parent = false
-top_level = false
-light_mask = 1
-visibility_layer = 1
-z_index = 0
-z_as_relative = true
-y_sort_enabled = false
-texture_filter = 0
-texture_repeat = 0
-material = null
-use_parent_material = false
 position = Vector2(-53, 35)
-rotation = 0.0
 scale = Vector2(0.7, 0.7)
-skew = 0.0
-enabled = true
-editor_only = false
-color = Color(1, 1, 1, 1)
-energy = 1.0
-blend_mode = 0
-range_z_min = -1024
-range_z_max = 1024
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
 shadow_enabled = true
-shadow_color = Color(0, 0, 0, 0)
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
 texture = SubResource("GradientTexture2D_idjb0")
-offset = Vector2(0, 0)
-texture_scale = 1.0
-height = 0.0
-script = null
 
 [node name="Box2" parent="." instance=ExtResource("12_cekp2")]
 position = Vector2(-116, 160)

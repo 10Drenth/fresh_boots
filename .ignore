@@ -1,0 +1,11 @@
+*.uid
+*.import
+*.png
+*.mp3
+*.tscn
+*.svg
+*.wav
+*.aseprite
+*.gif
+*.godot
+

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://copw5rock1xy6"]
+
+[ext_resource type="Script" uid="uid://0tcmmxqwlnl3" path="res://game/easthetics/light_occluder_2d.gd" id="1_d5e6m"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_svxkk"]
+
+[node name="LevelShape" type="CollisionPolygon2D"]
+build_mode = 1
+polygon = PackedVector2Array(-232, -104, 56, -104, 56, -72, 216, -72, 216, 56, -232, 56)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_svxkk")
+script = ExtResource("1_d5e6m")

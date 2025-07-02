@@ -1,7 +1,0 @@
-[gd_resource type="BitMap" format=3 uid="uid://bdipf2ul2ermp"]
-
-[resource]
-data = {
-"data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-"size": Vector2i(26, 15)
-}

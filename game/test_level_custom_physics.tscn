@@ -1,27 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://c7sxumpq1gncd"]
+[gd_scene load_steps=19 format=3 uid="uid://c7sxumpq1gncd"]
 
+[ext_resource type="Script" uid="uid://bvo3d37d86hng" path="res://game/level_management/level.gd" id="1_svxkk"]
 [ext_resource type="Script" uid="uid://c17cyke7q304" path="res://game/level_state.gd" id="1_t0s0n"]
 [ext_resource type="Texture2D" uid="uid://efe4j8q7e1ab" path="res://levels/level2/lvl2_bg.png" id="2_km77f"]
 [ext_resource type="PackedScene" uid="uid://copw5rock1xy6" path="res://game/level_management/level_shape.tscn" id="2_t0s0n"]
 [ext_resource type="Texture2D" uid="uid://cm20207kdtbkl" path="res://levels/level2/lvl2_walls.png" id="3_t0s0n"]
 [ext_resource type="Shader" uid="uid://d0tb6q35l2jaq" path="res://game/easthetics/space.gdshader" id="4_0udxs"]
+[ext_resource type="Script" uid="uid://c5glcrb6q7itk" path="res://game/level_management/level_walls.gd" id="4_km77f"]
 [ext_resource type="Texture2D" uid="uid://5xu64clsoum5" path="res://game/easthetics/sky_noise.tres" id="5_t0s0n"]
 [ext_resource type="Script" uid="uid://yql4lbkxf67a" path="res://game/entities/cam.gd" id="6_mgwqa"]
 [ext_resource type="Script" uid="uid://s08emtdob5be" path="res://game/player/player_v2.gd" id="7_0udxs"]
 [ext_resource type="Texture2D" uid="uid://ubjh27o2y6ns" path="res://game/player/player_shoes.png" id="8_t0s0n"]
-
-[sub_resource type="Gradient" id="Gradient_wi0qq"]
-offsets = PackedFloat32Array(0, 0.0871795, 0.378601, 0.798354, 1)
-colors = PackedColorArray(0.694887, 0.873389, 0.84779, 1, 0.666396, 0.77961, 0.750225, 1, 0.570947, 0.687776, 0.683141, 1, 0.154876, 0.154876, 0.154876, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_km77f"]
-gradient = SubResource("Gradient_wi0qq")
-width = 320
-height = 320
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.8, 0.1)
-metadata/_snap_enabled = true
+[ext_resource type="Texture2D" uid="uid://b6g8h4r4l04fm" path="res://game/entities/box/crate.png" id="9_bc678"]
+[ext_resource type="Script" uid="uid://ce8vodsqjyskx" path="res://game/entities/crate/crate.gd" id="9_d381c"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bc678"]
 
@@ -33,6 +24,9 @@ shader_parameter/c1 = Color(0.133333, 0.12549, 0.203922, 1)
 shader_parameter/c2 = Color(0.247059, 0.247059, 0.454902, 1)
 shader_parameter/c3 = Color(0.215686, 0.580392, 0.431373, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d381c"]
+size = Vector2(32, 32)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_km77f"]
 radius = 13.0
 height = 50.0
@@ -42,33 +36,36 @@ atlas = ExtResource("8_t0s0n")
 region = Rect2(0, 0, 64, 64)
 
 [node name="TestLevelCustomPhysics" type="Node2D"]
+
+[node name="LevelData" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_svxkk")
+
+[node name="LevelState" type="Node2D" parent="."]
 script = ExtResource("1_t0s0n")
 collission_shape_scene = ExtResource("2_t0s0n")
 
-[node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(-84, -44)
-shadow_enabled = true
-texture = SubResource("GradientTexture2D_km77f")
+[node name="LevelObjects" type="Node2D" parent="LevelState"]
 
-[node name="WorldBounds" type="StaticBody2D" parent="."]
+[node name="WorldBounds" type="StaticBody2D" parent="LevelState"]
 collision_layer = 9
 
-[node name="Walls" type="Sprite2D" parent="WorldBounds"]
-visible = false
+[node name="Walls" type="Sprite2D" parent="LevelState/WorldBounds"]
 light_mask = 0
 z_index = 6
 material = SubResource("CanvasItemMaterial_bc678")
 texture = ExtResource("3_t0s0n")
 centered = false
+script = ExtResource("4_km77f")
 
-[node name="Bg" type="Sprite2D" parent="WorldBounds"]
+[node name="Bg" type="Sprite2D" parent="LevelState/WorldBounds"]
 self_modulate = Color(0.617455, 0.617455, 0.617455, 1)
 z_index = -3
 material = SubResource("CanvasItemMaterial_bc678")
 texture = ExtResource("2_km77f")
 centered = false
 
-[node name="Sky" type="Sprite2D" parent="WorldBounds"]
+[node name="Sky" type="Sprite2D" parent="LevelState/WorldBounds"]
 light_mask = 0
 z_index = -5
 texture_repeat = 2
@@ -77,6 +74,45 @@ position = Vector2(60, 480)
 rotation = -1.5708
 texture = ExtResource("5_t0s0n")
 centered = false
+
+[node name="Crate" type="Node2D" parent="LevelState" groups=["physics_objects"]]
+position = Vector2(368, 112)
+script = ExtResource("9_d381c")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LevelState/Crate"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelState/Crate/StaticBody2D"]
+shape = SubResource("RectangleShape2D_d381c")
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelState/Crate"]
+z_index = 10
+texture = ExtResource("9_bc678")
+
+[node name="Crate2" type="Node2D" parent="LevelState" groups=["physics_objects"]]
+position = Vector2(336, 112)
+script = ExtResource("9_d381c")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LevelState/Crate2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelState/Crate2/StaticBody2D"]
+shape = SubResource("RectangleShape2D_d381c")
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelState/Crate2"]
+z_index = 10
+texture = ExtResource("9_bc678")
+
+[node name="Crate3" type="Node2D" parent="LevelState" groups=["physics_objects"]]
+position = Vector2(336, 80)
+script = ExtResource("9_d381c")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LevelState/Crate3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelState/Crate3/StaticBody2D"]
+shape = SubResource("RectangleShape2D_d381c")
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelState/Crate3"]
+z_index = 10
+texture = ExtResource("9_bc678")
 
 [node name="LevelCam" type="Camera2D" parent="."]
 position = Vector2(380, 208)
